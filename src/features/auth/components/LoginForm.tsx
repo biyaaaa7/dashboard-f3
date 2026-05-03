@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useAuth } from '../auth-context';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -42,15 +43,22 @@ export function LoginForm() {
   return (
     <Card className="w-full max-w-md bg-white/5 border-white/10 backdrop-blur-md shadow-2xl text-slate-50">
       <CardHeader className="space-y-1 text-center">
-        <div className="flex justify-center mb-4">
-          <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/20">
-            <Lock className="h-6 w-6 text-white" />
+        <div className="flex flex-col items-center justify-center mb-4 space-y-3">
+          <Image 
+            src="/logo-depan.png" 
+            alt="Logo PT DUTA NICHIRINDO PRATAMA" 
+            width={160}
+            height={80}
+            className="object-contain"
+            priority
+          />
+          <div className="text-sm font-bold tracking-wider text-slate-200">
+            PT DUTA NICHIRINDO PRATAMA
+          </div>
+          <div className="text-xs tracking-wide text-slate-400">
+            Sistem Monitoring Produksi
           </div>
         </div>
-        <CardTitle className="text-2xl font-bold tracking-tight">Digital Logbook</CardTitle>
-        <CardDescription className="text-slate-400">
-          Masuk ke sistem pencatatan produksi
-        </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
@@ -66,7 +74,7 @@ export function LoginForm() {
               <User className="absolute left-3 top-3 h-5 w-5 text-slate-500" />
               <Input 
                 id="username" 
-                placeholder="operator1 atau manager1" 
+                placeholder="enter your user name" 
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="pl-10 h-12 bg-slate-900/50 border-white/10 text-slate-100 placeholder:text-slate-500 focus-visible:ring-blue-500 focus-visible:border-blue-500"
@@ -83,7 +91,7 @@ export function LoginForm() {
               <Input 
                 id="pin" 
                 type="password"
-                placeholder="1234"
+                placeholder="enter your password"
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
                 className="pl-10 h-12 bg-slate-900/50 border-white/10 text-slate-100 placeholder:text-slate-500 focus-visible:ring-blue-500 focus-visible:border-blue-500"
@@ -98,7 +106,7 @@ export function LoginForm() {
             className="w-full h-12 text-md font-medium bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 border-0 shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]"
             disabled={isLoading}
           >
-            {isLoading ? "Memproses..." : "Masuk ke Sistem"}
+            {isLoading ? "Memproses..." : "Login"}
           </Button>
         </CardFooter>
       </form>
