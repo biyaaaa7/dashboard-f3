@@ -20,8 +20,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Digital Logbook",
-  description: "Production Quality Tracking System",
+  title: "DNP Monitoring Produksi",
+  description: "Sistem Pemantauan Hasil Produksi Terpadu",
 };
 
 export default function RootLayout({

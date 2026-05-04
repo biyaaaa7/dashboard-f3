@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { useAuth } from '@/features/auth/auth-context';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
+import Image from 'next/image';
 
 const NAV_ITEMS = [
   { name: 'Dashboard', href: '/manager', icon: LayoutDashboard },
@@ -39,9 +40,14 @@ export function ManagerSidebar() {
     >
       <div className="flex items-center justify-between h-16 px-4 border-b border-white/5">
         {!collapsed && (
-          <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent truncate">
-            DigiLog
-          </span>
+          <div className="flex items-center gap-2 overflow-hidden">
+            <div className="h-8 w-8 relative shrink-0">
+              <Image src="/logo_dnp.png" alt="DNP" fill className="object-contain" />
+            </div>
+            <span className="text-lg font-bold text-slate-50 truncate">
+              DNP Monitoring Produksi
+            </span>
+          </div>
         )}
         <Button 
           variant="ghost" 

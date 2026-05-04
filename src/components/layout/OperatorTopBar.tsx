@@ -1,8 +1,9 @@
 'use client';
 
-import { LogOut, UserCircle, Settings } from 'lucide-react';
+import { LogOut, UserCircle, Settings, MonitorCheck } from 'lucide-react';
 import { useAuth } from '@/features/auth/auth-context';
 import { Button } from '../ui/button';
+import Image from 'next/image';
 
 export function OperatorTopBar() {
   const { user, logout } = useAuth();
@@ -10,12 +11,12 @@ export function OperatorTopBar() {
   return (
     <header className="h-16 border-b border-white/5 bg-slate-900/50 backdrop-blur flex items-center justify-between px-6 sticky top-0 z-50">
       <div className="flex items-center gap-4">
-        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/20">
-          <Settings className="h-5 w-5 text-white" />
+        <div className="h-10 w-10 relative overflow-hidden shrink-0">
+          <Image src="/logo_dnp.png" alt="DNP" fill className="object-contain" />
         </div>
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-50">Digital Logbook</h1>
-          <p className="text-xs text-slate-400">Production Quality Tracking</p>
+          <h1 className="text-xl font-bold tracking-tight text-slate-50">DNP Monitoring Produksi</h1>
+          <p className="text-xs text-slate-400">Production Monitoring System</p>
         </div>
       </div>
 

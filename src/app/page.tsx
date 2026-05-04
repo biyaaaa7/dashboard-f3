@@ -1,15 +1,25 @@
 import { LoginForm } from "@/features/auth/components/LoginForm";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-slate-950 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-600/20 blur-[120px]" />
-        <div className="absolute top-[60%] -right-[10%] w-[40%] h-[60%] rounded-full bg-cyan-600/20 blur-[100px]" />
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/logo_depan.png"
+          alt="Background"
+          fill
+          priority
+          className="object-cover"
+          quality={100}
+        />
+        {/* Overlay to ensure readability */}
+        <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]" />
       </div>
-      
-      <div className="z-10 w-full flex justify-center">
+
+      {/* Login Content */}
+      <div className="z-10 w-full flex justify-center p-4">
         <LoginForm />
       </div>
     </div>

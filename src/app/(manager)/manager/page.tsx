@@ -42,7 +42,7 @@ export default function ManagerDashboard() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-white/10 relative overflow-hidden">
+        <Card className="glass glow-blue relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10">
             <Package className="w-16 h-16" />
           </div>
@@ -54,7 +54,7 @@ export default function ManagerDashboard() {
           </CardContent>
         </Card>
         
-        <Card className="bg-slate-900/50 border-white/10 relative overflow-hidden">
+        <Card className="glass glow-blue relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-emerald-500">
             <CheckCircle2 className="w-16 h-16" />
           </div>
@@ -66,7 +66,7 @@ export default function ManagerDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/50 border-white/10 relative overflow-hidden">
+        <Card className="glass glow-blue relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-rose-500">
             <AlertTriangle className="w-16 h-16" />
           </div>
@@ -78,7 +78,7 @@ export default function ManagerDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/50 border-white/10 relative overflow-hidden">
+        <Card className="glass glow-blue relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-amber-500">
             <Activity className="w-16 h-16" />
           </div>
@@ -98,7 +98,7 @@ export default function ManagerDashboard() {
       </div>
 
       {/* Recent Entries */}
-      <Card className="bg-slate-900/50 border-white/10">
+      <Card className="glass border-white/10">
         <CardHeader>
           <CardTitle className="text-lg text-slate-50">Input Terbaru Hari Ini</CardTitle>
         </CardHeader>
