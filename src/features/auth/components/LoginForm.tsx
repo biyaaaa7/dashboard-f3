@@ -57,7 +57,7 @@ export function LoginForm() {
         <div className="space-y-1">
           <CardTitle className="text-2xl font-bold tracking-tight text-white">DNP Monitoring Produksi</CardTitle>
           <CardDescription className="text-slate-400 font-medium">
-            Sistem Pemantauan Hasil Produksi
+            Sistem Pemantauan Hasil Produk
           </CardDescription>
         </div>
       </CardHeader>
