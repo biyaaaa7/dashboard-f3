@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useAuth } from '../auth-context';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, Lock, User, MonitorCheck } from 'lucide-react';
+import { AlertCircle, Lock, User } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import Image from 'next/image';
 
 export function LoginForm() {
   const [username, setUsername] = useState('');
