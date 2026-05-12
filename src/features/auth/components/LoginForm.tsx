@@ -20,18 +20,18 @@ export function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
+
     if (!username || !pin) {
       setError('Username dan PIN harus diisi');
       return;
     }
 
     setIsLoading(true);
-    
+
     try {
       const success = await login(username, pin);
       if (!success) {
-        setError('Username atau PIN salah. (Default: admin/1234, operator1/1234, manager1/1234)');
+        setError('Username atau PIN salah');
       }
     } catch (err) {
       setError('Terjadi kesalahan sistem');
@@ -41,76 +41,77 @@ export function LoginForm() {
   };
 
   return (
-    <Card className="w-full max-w-md bg-slate-900/90 border-white/20 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] text-slate-50 overflow-hidden border-t-blue-500/50 border-t-2">
-      <CardHeader className="space-y-4 text-center pt-8 pb-6">
-        <div className="flex justify-center mb-2">
-          <div className="relative w-32 h-32">
-            <Image 
-              src="/logo_dnp.png" 
-              alt="DNP Logo" 
-              fill 
-              className="object-contain"
-              priority
-            />
+    <div className="w-full max-w-md animate-in fade-in zoom-in duration-500 px-4">
+      <Card className="bg-white/80 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(80,140,180,0.15)] rounded-3xl overflow-hidden">
+        <div className="p-8">
+          <div className="space-y-6 text-center mb-8">
+            <div className="flex justify-center">
+              <div className="bg-white p-3.5 rounded-2xl shadow-sm inline-flex items-center justify-center border border-white/40">
+                <div className="relative w-44 h-14">
+                  <Image
+                    src="/logo_login.png"
+                    alt="DNP Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <h1 className="text-2xl font-bold tracking-tight text-[#123047] uppercase">
+                DNP PRODUCTION
+              </h1>
+              <p className="text-[#4f6b81] font-medium text-sm">
+                Monitoring System
+              </p>
+            </div>
           </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+              <Alert variant="destructive" className="bg-rose-500/10 border-rose-500/20 text-rose-500 py-3 px-4 rounded-xl">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription className="text-xs font-medium ml-2">{error}</AlertDescription>
+              </Alert>
+            )}
+            
+            <div className="space-y-4">
+              <div className="relative group">
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#7b93a8] transition-colors group-focus-within:text-[#5cc8ff]" />
+                <Input
+                  id="username"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="pl-12 h-12 bg-white/50 border-white/40 text-[#0f172a] placeholder:text-[#7b93a8] focus-visible:ring-1 focus-visible:ring-[#5cc8ff] focus-visible:border-[#5cc8ff] transition-all rounded-[16px] shadow-sm"
+                  autoComplete="username"
+                />
+              </div>
+              <div className="relative group">
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#7b93a8] transition-colors group-focus-within:text-[#5cc8ff]" />
+                <Input
+                  id="pin"
+                  type="password"
+                  placeholder="Password"
+                  value={pin}
+                  onChange={(e) => setPin(e.target.value)}
+                  className="pl-12 h-12 bg-white/50 border-white/40 text-[#0f172a] placeholder:text-[#7b93a8] focus-visible:ring-1 focus-visible:ring-[#5cc8ff] focus-visible:border-[#5cc8ff] transition-all rounded-[16px] shadow-sm"
+                  autoComplete="current-password"
+                />
+              </div>
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full h-12 text-sm font-semibold bg-gradient-to-br from-[#5cc8ff] to-[#4da8ff] hover:opacity-90 text-white shadow-[0_4px_14px_rgba(92,200,255,0.4)] transition-all active:scale-[0.98] rounded-[16px] border-none"
+              disabled={isLoading}
+            >
+              {isLoading ? "Signing In..." : "Sign In"}
+            </Button>
+          </form>
         </div>
-        <div className="space-y-1">
-          <CardTitle className="text-2xl font-bold tracking-tight text-white">DNP Monitoring Produksi</CardTitle>
-          <CardDescription className="text-slate-400 font-medium">
-            Sistem Pemantauan Hasil Produk
-          </CardDescription>
-        </div>
-      </CardHeader>
-      <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-5 px-8">
-          {error && (
-            <Alert variant="destructive" className="bg-rose-500/10 border-rose-500/20 text-rose-400 py-2">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription className="text-xs">{error}</AlertDescription>
-            </Alert>
-          )}
-          <div className="space-y-2">
-            <Label htmlFor="username" className="text-slate-300 text-sm font-semibold">Username</Label>
-            <div className="relative">
-              <User className="absolute left-3 top-3 h-5 w-5 text-slate-500" />
-              <Input 
-                id="username" 
-                placeholder="Username anda" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="pl-10 h-11 bg-slate-950/50 border-white/10 text-slate-100 placeholder:text-slate-500 focus-visible:ring-blue-500 focus-visible:border-blue-500 transition-all"
-                autoComplete="username"
-              />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="pin" className="text-slate-300 text-sm font-semibold">PIN</Label>
-            </div>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 h-5 w-5 text-slate-500" />
-              <Input 
-                id="pin" 
-                type="password"
-                placeholder="****"
-                value={pin}
-                onChange={(e) => setPin(e.target.value)}
-                className="pl-10 h-11 bg-slate-950/50 border-white/10 text-slate-100 placeholder:text-slate-500 focus-visible:ring-blue-500 focus-visible:border-blue-500 transition-all"
-                autoComplete="current-password"
-              />
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter className="px-8 pb-10 pt-4">
-          <Button 
-            type="submit" 
-            className="w-full h-11 text-md font-bold bg-blue-600 hover:bg-blue-500 text-white border-0 shadow-lg shadow-blue-900/20 transition-all active:scale-[0.98]"
-            disabled={isLoading}
-          >
-            {isLoading ? "Memproses..." : "MASUK KE SISTEM"}
-          </Button>
-        </CardFooter>
-      </form>
-    </Card>
+      </Card>
+    </div>
   );
 }

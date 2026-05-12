@@ -47,40 +47,40 @@ export default function OperatorDashboard() {
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-8">
       {/* Session Selection */}
-      <Card className="bg-slate-900/50 border-white/10 backdrop-blur-sm text-slate-50">
-        <CardHeader className="pb-4 border-b border-white/5">
+      <Card className="bg-white/60 border-white/40 backdrop-blur-xl text-[#0f172a] shadow-sm">
+        <CardHeader className="pb-4 border-b border-white/40">
           <CardTitle className="text-xl flex items-center gap-2">
-            <Monitor className="h-5 w-5 text-blue-400" />
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#5cc8ff]/20 text-[#5cc8ff] text-sm"><Monitor className="h-4 w-4" /></span>
             Setup Sesi Kerja
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-3">
-            <label className="text-sm text-slate-400 flex items-center gap-2">
-              <Clock className="h-4 w-4" /> Shift Saat Ini
+            <label className="text-sm text-[#4f6b81] flex items-center gap-2">
+              <Clock className="h-4 w-4 text-[#7b93a8]" /> Shift Saat Ini
             </label>
             <Select value={shift} onValueChange={(val) => val && setShift(val)}>
-              <SelectTrigger className="h-14 bg-slate-950 border-white/10 text-lg">
+              <SelectTrigger className="h-14 bg-white/50 border-white/40 text-lg text-[#0f172a] rounded-[14px]">
                 <SelectValue placeholder="Pilih Shift" />
               </SelectTrigger>
-              <SelectContent className="bg-slate-900 border-white/10 text-slate-100">
+              <SelectContent className="bg-white border-white/40 text-[#0f172a] rounded-xl shadow-lg">
                 {SHIFTS.map(s => (
-                  <SelectItem key={s} value={s.toString()} className="text-lg py-3">Shift {s}</SelectItem>
+                  <SelectItem key={s} value={s.toString()} className="text-lg py-3 text-[#4f6b81] hover:bg-[#aff0fa]/30">Shift {s}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
           <div className="space-y-3">
-            <label className="text-sm text-slate-400 flex items-center gap-2">
-              <Monitor className="h-4 w-4" /> Mesin / Line
+            <label className="text-sm text-[#4f6b81] flex items-center gap-2">
+              <Monitor className="h-4 w-4 text-[#7b93a8]" /> Mesin / Line
             </label>
             <Select value={machine} onValueChange={(val) => val && setMachine(val)}>
-              <SelectTrigger className="h-14 bg-slate-950 border-white/10 text-lg">
+              <SelectTrigger className="h-14 bg-white/50 border-white/40 text-lg text-[#0f172a] rounded-[14px]">
                 <SelectValue placeholder="Pilih Mesin" />
               </SelectTrigger>
-              <SelectContent className="bg-slate-900 border-white/10 text-slate-100">
+              <SelectContent className="bg-white border-white/40 text-[#0f172a] rounded-xl shadow-lg">
                 {MACHINES.map(m => (
-                  <SelectItem key={m} value={m} className="text-lg py-3">{m}</SelectItem>
+                  <SelectItem key={m} value={m} className="text-lg py-3 text-[#4f6b81] hover:bg-[#aff0fa]/30">{m}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -91,7 +91,7 @@ export default function OperatorDashboard() {
       {/* Main Action */}
       <Button 
         onClick={handleStartInput}
-        className="w-full h-24 text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 border-0 shadow-xl shadow-blue-500/20 rounded-2xl transition-all active:scale-[0.98] group"
+        className="w-full h-24 text-2xl font-bold bg-gradient-to-r from-[#5cc8ff] to-[#4da8ff] hover:opacity-90 border-0 shadow-[0_8px_24px_rgba(80,140,180,0.2)] rounded-[20px] transition-all active:scale-[0.98] group text-white"
       >
         <PlusCircle className="mr-4 h-10 w-10 text-white group-hover:rotate-90 transition-transform duration-300" />
         INPUT PRODUKSI BARU
@@ -99,21 +99,21 @@ export default function OperatorDashboard() {
 
       {/* Mini Dashboard */}
       <div className="grid grid-cols-3 gap-4">
-        <Card className="bg-slate-900/50 border-white/10 flex flex-col items-center justify-center p-6">
-          <p className="text-slate-400 text-sm mb-2">Total Hari Ini</p>
-          <p className="text-4xl font-bold text-slate-50">{totalItems}</p>
+        <Card className="bg-white/60 border-white/40 shadow-sm flex flex-col items-center justify-center p-6">
+          <p className="text-[#7b93a8] text-sm mb-2">Total Hari Ini</p>
+          <p className="text-4xl font-bold text-[#123047]">{totalItems}</p>
         </Card>
-        <Card className="bg-emerald-900/20 border-emerald-500/20 flex flex-col items-center justify-center p-6">
-          <p className="text-emerald-400 text-sm mb-2 flex items-center gap-1">
+        <Card className="bg-[#4cc9a6]/10 border-[#4cc9a6]/20 shadow-sm flex flex-col items-center justify-center p-6">
+          <p className="text-[#2ca582] text-sm mb-2 flex items-center gap-1 font-medium">
             <CheckCircle2 className="h-4 w-4" /> Good (FG)
           </p>
-          <p className="text-4xl font-bold text-emerald-400">{totalGood}</p>
+          <p className="text-4xl font-bold text-[#2ca582]">{totalGood}</p>
         </Card>
-        <Card className="bg-rose-900/20 border-rose-500/20 flex flex-col items-center justify-center p-6">
-          <p className="text-rose-400 text-sm mb-2 flex items-center gap-1">
+        <Card className="bg-[#ff7f96]/10 border-[#ff7f96]/20 shadow-sm flex flex-col items-center justify-center p-6">
+          <p className="text-[#e0566e] text-sm mb-2 flex items-center gap-1 font-medium">
             <AlertTriangle className="h-4 w-4" /> NG (Defect)
           </p>
-          <p className="text-4xl font-bold text-rose-400">{totalNG}</p>
+          <p className="text-4xl font-bold text-[#e0566e]">{totalNG}</p>
         </Card>
       </div>
     </div>

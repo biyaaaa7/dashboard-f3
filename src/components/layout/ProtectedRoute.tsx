@@ -36,8 +36,8 @@ export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) 
 
   if (isChecking) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+      <div className="min-h-screen flex items-center justify-center bg-[#aff0fa]">
+        <Loader2 className="h-8 w-8 animate-spin text-[#5cc8ff]" />
       </div>
     );
   }

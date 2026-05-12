@@ -8,12 +8,12 @@ export default function OperatorLayout({
 }) {
   return (
     <ProtectedRoute allowedRoles={['operator']}>
-      <div className="min-h-screen flex flex-col bg-slate-950 relative overflow-hidden">
-        {/* Background glow specific for operator */}
-        <div className="absolute top-0 left-[20%] w-[60%] h-[300px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
+        {/* Soft white background glow specific for operator */}
+        <div className="absolute top-0 left-[20%] w-[60%] h-[300px] bg-white/40 rounded-full blur-[120px] pointer-events-none" />
         
         <OperatorTopBar />
-        <main className="flex-1 overflow-y-auto z-10">
+        <main className="flex-1 overflow-y-auto relative z-10">
           {children}
         </main>
       </div>

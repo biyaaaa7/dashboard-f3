@@ -63,53 +63,53 @@ export default function ExportPage() {
   return (
     <div className="p-6 lg:p-8 max-w-4xl mx-auto space-y-8">
       <div className="flex items-center gap-3">
-        <div className="h-10 w-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-          <Download className="h-5 w-5 text-emerald-400" />
+        <div className="h-10 w-10 rounded-lg bg-[#4cc9a6]/20 flex items-center justify-center">
+          <Download className="h-5 w-5 text-[#4cc9a6]" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-slate-50">Export Data</h1>
-          <p className="text-slate-400 text-sm">Unduh laporan produksi untuk analisis eksternal</p>
+          <h1 className="text-2xl font-bold text-[#123047]">Export Data</h1>
+          <p className="text-[#4f6b81] text-sm">Unduh laporan produksi untuk analisis eksternal</p>
         </div>
       </div>
 
-      <Card className="bg-slate-900/50 border-white/10 backdrop-blur-sm">
+      <Card className="bg-white/60 border-white/40 shadow-sm rounded-xl backdrop-blur-md">
         <CardHeader>
-          <CardTitle className="text-slate-50 flex items-center gap-2">
-            <Calendar className="h-5 w-5 text-blue-400" />
+          <CardTitle className="text-[#123047] flex items-center gap-2">
+            <Calendar className="h-5 w-5 text-[#5cc8ff]" />
             Filter Laporan
           </CardTitle>
-          <CardDescription className="text-slate-400">Pilih rentang tanggal data yang ingin diunduh</CardDescription>
+          <CardDescription className="text-[#7b93a8]">Pilih rentang tanggal data yang ingin diunduh</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <Label className="text-slate-300">Tanggal Mulai</Label>
+              <Label className="text-[#4f6b81]">Tanggal Mulai</Label>
               <Input 
                 type="date" 
                 value={startDate}
                 onChange={e => setStartDate(e.target.value)}
-                className="bg-slate-950 border-white/10 text-slate-200 h-12 focus:ring-blue-500" 
+                className="bg-white/60 border-white/40 text-[#123047] h-12 focus-visible:ring-[#5cc8ff] rounded-xl shadow-sm" 
               />
             </div>
             <div className="space-y-2">
-              <Label className="text-slate-300">Tanggal Akhir</Label>
+              <Label className="text-[#4f6b81]">Tanggal Akhir</Label>
               <Input 
                 type="date" 
                 value={endDate}
                 onChange={e => setEndDate(e.target.value)}
-                className="bg-slate-950 border-white/10 text-slate-200 h-12 focus:ring-blue-500" 
+                className="bg-white/60 border-white/40 text-[#123047] h-12 focus-visible:ring-[#5cc8ff] rounded-xl shadow-sm" 
               />
             </div>
           </div>
 
-          <div className="pt-6 border-t border-white/5">
+          <div className="pt-6 border-t border-white/40">
             <Button 
               onClick={handleExport}
-              className="w-full h-14 bg-emerald-600 hover:bg-emerald-500 text-lg font-bold shadow-lg shadow-emerald-600/20 transition-all active:scale-[0.98]"
+              className="w-full h-14 bg-[#4cc9a6] hover:bg-[#3ba88a] text-white text-lg font-bold shadow-md rounded-xl transition-all active:scale-[0.98] border-none"
             >
               <FileSpreadsheet className="mr-2 h-6 w-6" /> Unduh Laporan (CSV)
             </Button>
-            <p className="text-center text-xs text-slate-500 mt-4 italic">
+            <p className="text-center text-xs text-[#7b93a8] mt-4 italic">
               * Format CSV dapat dibuka langsung menggunakan Microsoft Excel.
             </p>
           </div>

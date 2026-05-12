@@ -133,21 +133,21 @@ export function ProductionInputForm() {
 
   return (
     <div className="p-4 sm:p-6 max-w-3xl mx-auto space-y-6 pb-24">
-      <div className="flex justify-between items-center bg-slate-900/50 p-4 rounded-2xl border border-white/5 backdrop-blur">
-        <Button variant="ghost" className="text-slate-400 hover:text-white" onClick={() => router.push('/operator')}>
+      <div className="flex justify-between items-center bg-white/60 p-4 rounded-2xl border border-white/40 backdrop-blur-md shadow-sm">
+        <Button variant="ghost" className="text-[#4f6b81] hover:text-[#123047] hover:bg-white/40" onClick={() => router.push('/operator')}>
           <ChevronLeft className="mr-2 h-4 w-4" /> Batal
         </Button>
         <div className="text-right">
-          <p className="text-sm text-slate-400">Shift {shift}</p>
-          <p className="text-lg font-bold text-blue-400">{machineId}</p>
+          <p className="text-sm text-[#7b93a8]">Shift {shift}</p>
+          <p className="text-lg font-bold text-[#123047]">{machineId}</p>
         </div>
       </div>
 
       {/* 1. Pilih Item */}
-      <Card className="bg-slate-900/50 border-white/10 backdrop-blur-sm text-slate-50 overflow-visible">
-        <CardHeader className="pb-4 border-b border-white/5">
+      <Card className="bg-white/60 border-white/40 backdrop-blur-xl text-[#0f172a] shadow-sm overflow-visible">
+        <CardHeader className="pb-4 border-b border-white/40">
           <CardTitle className="text-xl flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-400 text-sm">1</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#5cc8ff]/20 text-[#5cc8ff] text-sm">1</span>
             Pilih Item Produksi
           </CardTitle>
         </CardHeader>
@@ -159,8 +159,8 @@ export function ProductionInputForm() {
                 role="combobox"
                 aria-expanded={openCombobox}
                 className={cn(
-                  "w-full h-14 justify-between bg-slate-950 border-white/10 text-lg hover:bg-slate-900 hover:text-white",
-                  !selectedItem && "text-slate-400"
+                  "w-full h-14 justify-between bg-white/50 border-white/40 text-lg hover:bg-white/60 hover:text-[#123047]",
+                  !selectedItem && "text-[#7b93a8]"
                 )}
               >
                 {selectedItem 
@@ -168,11 +168,11 @@ export function ProductionInputForm() {
                   : "Cari kode atau nama item..."}
               </Button>
             } />
-            <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0 bg-slate-900 border-white/10" align="start">
-              <Command className="bg-transparent text-slate-50">
-                <CommandInput placeholder="Ketik nama / kode item..." className="text-slate-50 placeholder:text-slate-500" />
+            <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0 bg-white border-white/40 shadow-lg rounded-xl" align="start">
+              <Command className="bg-transparent text-[#0f172a]">
+                <CommandInput placeholder="Ketik nama / kode item..." className="text-[#0f172a] placeholder:text-[#7b93a8]" />
                 <CommandList>
-                  <CommandEmpty className="py-6 text-center text-slate-400">Item tidak ditemukan.</CommandEmpty>
+                  <CommandEmpty className="py-6 text-center text-[#7b93a8]">Item tidak ditemukan.</CommandEmpty>
                   <CommandGroup>
                     {items.map((item) => (
                       <CommandItem
@@ -182,11 +182,11 @@ export function ProductionInputForm() {
                           setSelectedItem(item);
                           setOpenCombobox(false);
                         }}
-                        className="text-slate-200 hover:bg-white/10 cursor-pointer py-3"
+                        className="text-[#4f6b81] hover:bg-[#aff0fa]/30 cursor-pointer py-3"
                       >
                         <div className="flex flex-col">
-                          <span className="font-medium text-blue-400">{item.code}</span>
-                          <span>{item.name}</span>
+                          <span className="font-medium text-[#5cc8ff]">{item.code}</span>
+                          <span className="text-[#123047]">{item.name}</span>
                         </div>
                       </CommandItem>
                     ))}
@@ -197,12 +197,12 @@ export function ProductionInputForm() {
           </Popover>
           
           {selectedItem && (
-            <div className="mt-4 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 flex justify-between items-center">
+            <div className="mt-4 p-4 rounded-xl bg-[#5cc8ff]/10 border border-[#5cc8ff]/20 flex justify-between items-center shadow-sm">
               <div>
-                <p className="text-xs text-blue-400 font-medium">Kategori: {selectedItem.category}</p>
-                <p className="font-medium text-slate-200">{selectedItem.name}</p>
+                <p className="text-xs text-[#5cc8ff] font-medium">Kategori: {selectedItem.category}</p>
+                <p className="font-medium text-[#123047]">{selectedItem.name}</p>
               </div>
-              <CheckCircle2 className="h-6 w-6 text-blue-400" />
+              <CheckCircle2 className="h-6 w-6 text-[#5cc8ff]" />
             </div>
           )}
         </CardContent>
@@ -210,19 +210,19 @@ export function ProductionInputForm() {
 
       {/* 2. Input Hasil */}
       <div className={cn("transition-all duration-500", selectedItem ? "opacity-100" : "opacity-50 pointer-events-none")}>
-        <Card className="bg-slate-900/50 border-white/10 backdrop-blur-sm text-slate-50">
-          <CardHeader className="pb-4 border-b border-white/5">
+        <Card className="bg-white/60 border-white/40 backdrop-blur-xl text-[#0f172a] shadow-sm">
+          <CardHeader className="pb-4 border-b border-white/40">
             <CardTitle className="text-xl flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-400 text-sm">2</span>
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#5cc8ff]/20 text-[#5cc8ff] text-sm">2</span>
               Input Hasil
             </CardTitle>
           </CardHeader>
           <CardContent className="pt-6 space-y-8">
             
             {/* GOOD Input */}
-            <div className="space-y-3 bg-emerald-950/20 p-6 rounded-2xl border border-emerald-500/20 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-bl-[100px] pointer-events-none" />
-              <Label className="text-emerald-400 text-lg flex items-center gap-2">
+            <div className="space-y-3 bg-[#4cc9a6]/10 p-6 rounded-2xl border border-[#4cc9a6]/20 relative overflow-hidden shadow-sm">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#4cc9a6]/10 rounded-bl-[100px] pointer-events-none" />
+              <Label className="text-[#2ca582] text-lg flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5" />
                 Barang OK (FG)
               </Label>
@@ -231,30 +231,30 @@ export function ProductionInputForm() {
                 min="0"
                 value={goodQty}
                 onChange={e => setGoodQty(e.target.value === '' ? '' : parseInt(e.target.value))}
-                className="h-20 text-center text-4xl font-bold bg-slate-950 border-emerald-500/30 text-emerald-400 focus-visible:ring-emerald-500"
+                className="h-20 text-center text-4xl font-bold bg-white/60 border-[#4cc9a6]/30 text-[#2ca582] focus-visible:ring-[#4cc9a6] shadow-sm rounded-xl"
                 placeholder="0"
               />
             </div>
 
             {/* NG Input */}
-            <div className="space-y-4 bg-rose-950/20 p-6 rounded-2xl border border-rose-500/20">
+            <div className="space-y-4 bg-[#ff7f96]/10 p-6 rounded-2xl border border-[#ff7f96]/20 shadow-sm">
               <div className="flex justify-between items-center mb-4">
-                <Label className="text-rose-400 text-lg flex items-center gap-2">
+                <Label className="text-[#e0566e] text-lg flex items-center gap-2">
                   <AlertCircle className="h-5 w-5" />
                   Barang NG (Defect)
                 </Label>
-                <span className="text-2xl font-bold text-rose-500">{totalNG}</span>
+                <span className="text-2xl font-bold text-[#e0566e]">{totalNG}</span>
               </div>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {activeDefects.map(cat => (
                   <div key={cat.id} className="space-y-2">
-                    <Label className="text-slate-400 text-xs uppercase tracking-wider">{cat.label}</Label>
-                    <div className="flex items-center">
+                    <Label className="text-[#4f6b81] text-xs uppercase tracking-wider">{cat.label}</Label>
+                    <div className="flex items-center shadow-sm rounded-lg overflow-hidden">
                       <Button 
                         type="button"
                         variant="outline"
-                        className="h-12 w-12 rounded-r-none border-white/10 bg-slate-900 text-slate-300"
+                        className="h-12 w-12 rounded-none border-white/40 bg-white/60 text-[#4f6b81] hover:bg-[#ff7f96]/10 hover:text-[#e0566e]"
                         onClick={() => handleDefectChange(cat.id, Math.max(0, (defects[cat.id] || 0) - 1).toString())}
                       >-</Button>
                       <Input
@@ -262,13 +262,13 @@ export function ProductionInputForm() {
                         min="0"
                         value={defects[cat.id] || ''}
                         onChange={(e) => handleDefectChange(cat.id, e.target.value)}
-                        className="h-12 text-center text-lg font-medium bg-slate-950 border-y-white/10 border-x-0 rounded-none text-rose-300 focus-visible:ring-0"
+                        className="h-12 text-center text-lg font-medium bg-white/50 border-y-white/40 border-x-0 rounded-none text-[#e0566e] focus-visible:ring-0"
                         placeholder="0"
                       />
                       <Button 
                         type="button"
                         variant="outline"
-                        className="h-12 w-12 rounded-l-none border-white/10 bg-slate-900 text-slate-300"
+                        className="h-12 w-12 rounded-none border-white/40 bg-white/60 text-[#4f6b81] hover:bg-[#ff7f96]/10 hover:text-[#e0566e]"
                         onClick={() => handleDefectChange(cat.id, ((defects[cat.id] || 0) + 1).toString())}
                       >+</Button>
                     </div>
@@ -279,23 +279,23 @@ export function ProductionInputForm() {
 
             {/* Notes */}
             <div className="space-y-3">
-              <Label className="text-slate-400">Catatan (Opsional)</Label>
+              <Label className="text-[#4f6b81]">Catatan (Opsional)</Label>
               <Textarea 
                 value={notes}
                 onChange={e => setNotes(e.target.value)}
                 placeholder="Tambah keterangan jika diperlukan..."
-                className="bg-slate-950 border-white/10 min-h-[100px] text-slate-200"
+                className="bg-white/50 border-white/40 min-h-[100px] text-[#0f172a] placeholder:text-[#7b93a8] rounded-xl shadow-sm"
               />
             </div>
           </CardContent>
-          <CardFooter className="bg-slate-900/80 p-6 border-t border-white/5 flex items-center justify-between">
-            <div className="text-slate-400">
-              Total Produksi: <strong className="text-white text-xl ml-2">{totalProduction}</strong>
+          <CardFooter className="bg-white/40 p-6 border-t border-white/40 flex items-center justify-between">
+            <div className="text-[#4f6b81]">
+              Total Produksi: <strong className="text-[#123047] text-xl ml-2">{totalProduction}</strong>
             </div>
             <Button 
               onClick={handleSubmit} 
               disabled={isSubmitting || !selectedItem || (goodQty === '' && totalNG === 0)}
-              className="bg-blue-600 hover:bg-blue-500 h-14 px-8 text-lg rounded-xl shadow-lg shadow-blue-500/20"
+              className="bg-gradient-to-br from-[#5cc8ff] to-[#4da8ff] hover:opacity-90 h-14 px-8 text-lg rounded-[16px] shadow-[0_4px_14px_rgba(92,200,255,0.4)] text-white border-none"
             >
               {isSubmitting ? (
                 "Menyimpan..."

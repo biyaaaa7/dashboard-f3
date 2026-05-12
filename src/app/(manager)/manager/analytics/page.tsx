@@ -69,24 +69,24 @@ export default function AnalyticsPage() {
     <div className="p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-            <BarChart3 className="h-5 w-5 text-blue-400" />
+          <div className="h-10 w-10 rounded-lg bg-[#5cc8ff]/20 flex items-center justify-center">
+            <BarChart3 className="h-5 w-5 text-[#5cc8ff]" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-50">Analytics Produksi</h1>
-            <p className="text-slate-400 text-sm">Analisis tren dan performa kualitas</p>
+            <h1 className="text-2xl font-bold text-[#123047]">Analytics Produksi</h1>
+            <p className="text-[#4f6b81] text-sm">Analisis tren dan performa kualitas</p>
           </div>
         </div>
 
-        <div className="flex bg-slate-900/50 p-1 rounded-lg border border-white/5">
+        <div className="flex bg-white/60 p-1 rounded-lg border border-white/40 shadow-sm">
           {[7, 14, 30].map(d => (
             <button
               key={d}
               onClick={() => setDays(d)}
               className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all ${
                 days === d 
-                  ? 'bg-blue-600 text-white shadow-lg' 
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-[#5cc8ff] text-white shadow-sm' 
+                  : 'text-[#7b93a8] hover:text-[#4f6b81]'
               }`}
             >
               {d} Hari
@@ -97,50 +97,50 @@ export default function AnalyticsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Trend Chart */}
-        <Card className="lg:col-span-2 bg-slate-900/50 border-white/10 backdrop-blur-sm">
+        <Card className="lg:col-span-2 bg-white/60 border-white/40 shadow-sm rounded-[24px]">
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-blue-400" />
+            <CardTitle className="text-lg flex items-center gap-2 text-[#123047]">
+              <TrendingUp className="h-5 w-5 text-[#5cc8ff]" />
               Tren Produksi & NG
             </CardTitle>
-            <CardDescription>Perbandingan output harian (Good vs Defect)</CardDescription>
+            <CardDescription className="text-[#7b93a8]">Perbandingan output harian (Good vs Defect)</CardDescription>
           </CardHeader>
           <CardContent className="h-[350px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
-                <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+                <XAxis dataKey="name" stroke="#7b93a8" fontSize={12} tickLine={false} axisLine={false} />
+                <YAxis stroke="#7b93a8" fontSize={12} tickLine={false} axisLine={false} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', color: '#f8fafc' }}
+                  contentStyle={{ backgroundColor: 'rgba(255,255,255,0.9)', borderColor: '#e2e8f0', color: '#123047', borderRadius: '8px', backdropFilter: 'blur(8px)' }}
                   itemStyle={{ fontSize: '12px' }}
                 />
                 <Legend />
-                <Line type="monotone" dataKey="good" name="Good" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                <Line type="monotone" dataKey="ng" name="Defect (NG)" stroke="#ef4444" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="good" name="Good" stroke="#4cc9a6" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="ng" name="Defect (NG)" stroke="#ff7f96" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
         {/* Defect Pareto */}
-        <Card className="bg-slate-900/50 border-white/10 backdrop-blur-sm">
+        <Card className="bg-white/60 border-white/40 shadow-sm rounded-[24px]">
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-amber-400" />
+            <CardTitle className="text-lg flex items-center gap-2 text-[#123047]">
+              <AlertTriangle className="h-5 w-5 text-[#ffbf69]" />
               Pareto Defect
             </CardTitle>
-            <CardDescription>Penyebab NG terbanyak</CardDescription>
+            <CardDescription className="text-[#7b93a8]">Penyebab NG terbanyak</CardDescription>
           </CardHeader>
           <CardContent className="h-[350px] flex items-center justify-center">
             {defectBreakdown.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={defectBreakdown} layout="vertical">
                   <XAxis type="number" hide />
-                  <YAxis dataKey="name" type="category" stroke="#94a3b8" fontSize={12} width={100} axisLine={false} tickLine={false} />
+                  <YAxis dataKey="name" type="category" stroke="#7b93a8" fontSize={12} width={100} axisLine={false} tickLine={false} />
                   <Tooltip 
-                    cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', color: '#f8fafc' }}
+                    cursor={{ fill: 'rgba(92,200,255,0.1)' }}
+                    contentStyle={{ backgroundColor: 'rgba(255,255,255,0.9)', borderColor: '#e2e8f0', color: '#123047', borderRadius: '8px', backdropFilter: 'blur(8px)' }}
                   />
                   <Bar dataKey="value" name="Qty" radius={[0, 4, 4, 0]}>
                     {defectBreakdown.map((entry, index) => (
@@ -150,7 +150,7 @@ export default function AnalyticsPage() {
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-slate-500 text-sm">Belum ada data defect</p>
+              <p className="text-[#7b93a8] text-sm">Belum ada data defect</p>
             )}
           </CardContent>
         </Card>
@@ -159,20 +159,20 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Summary Stats */}
         {[
-          { label: 'Total Output', value: chartData.reduce((acc, d) => acc + d.total, 0), icon: Package, color: 'text-blue-400' },
-          { label: 'Total Good', value: chartData.reduce((acc, d) => acc + d.good, 0), icon: TrendingUp, color: 'text-emerald-400' },
-          { label: 'Total Defect', value: chartData.reduce((acc, d) => acc + d.ng, 0), icon: AlertTriangle, color: 'text-rose-400' },
-          { label: 'Rata-rata Defect Rate', value: ((chartData.reduce((acc, d) => acc + d.ng, 0) / (chartData.reduce((acc, d) => acc + d.total, 0) || 1)) * 100).toFixed(2) + '%', icon: Calendar, color: 'text-amber-400' },
+          { label: 'Total Output', value: chartData.reduce((acc, d) => acc + d.total, 0), icon: Package, color: 'text-[#5cc8ff]' },
+          { label: 'Total Good', value: chartData.reduce((acc, d) => acc + d.good, 0), icon: TrendingUp, color: 'text-[#4cc9a6]' },
+          { label: 'Total Defect', value: chartData.reduce((acc, d) => acc + d.ng, 0), icon: AlertTriangle, color: 'text-[#ff7f96]' },
+          { label: 'Rata-rata Defect Rate', value: ((chartData.reduce((acc, d) => acc + d.ng, 0) / (chartData.reduce((acc, d) => acc + d.total, 0) || 1)) * 100).toFixed(2) + '%', icon: Calendar, color: 'text-[#ffbf69]' },
         ].map((stat, i) => (
-          <Card key={i} className="bg-slate-900/50 border-white/10">
+          <Card key={i} className="bg-white/60 border border-white/40 shadow-sm rounded-xl">
             <CardContent className="pt-6">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg bg-slate-950 border border-white/5 ${stat.color}`}>
+                <div className={`p-2 rounded-lg bg-white/80 border border-white/50 ${stat.color}`}>
                   <stat.icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400">{stat.label}</p>
-                  <p className="text-xl font-bold text-slate-50">{stat.value.toLocaleString()}</p>
+                  <p className="text-xs text-[#4f6b81]">{stat.label}</p>
+                  <p className="text-xl font-bold text-[#123047]">{stat.value.toLocaleString()}</p>
                 </div>
               </div>
             </CardContent>

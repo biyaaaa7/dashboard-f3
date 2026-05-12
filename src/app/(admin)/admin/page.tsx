@@ -19,44 +19,44 @@ export default function AdminDashboard() {
   return (
     <div className="p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-slate-50">Admin Dashboard</h1>
-        <p className="text-slate-400 text-sm">Overview of system data and settings</p>
+        <h1 className="text-2xl font-bold text-[#123047]">Admin Dashboard</h1>
+        <p className="text-[#4f6b81] text-sm">Overview of system data and settings</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <Card className="bg-slate-900/50 border-white/10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
+        <Card className="glass-soft relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10 text-[#5cc8ff]">
             <Users className="w-16 h-16" />
           </div>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">Total Users</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#7b93a8]">Total Users</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-slate-50">{stats.users}</div>
+            <div className="text-3xl font-bold text-[#123047]">{stats.users}</div>
           </CardContent>
         </Card>
         
-        <Card className="bg-slate-900/50 border-white/10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10 text-emerald-500">
+        <Card className="glass-soft relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10 text-[#4cc9a6]">
             <Database className="w-16 h-16" />
           </div>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">Active Products</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#7b93a8]">Active Products</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-emerald-400">{stats.items}</div>
+            <div className="text-3xl font-bold text-[#2ca582]">{stats.items}</div>
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/50 border-white/10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10 text-rose-500">
+        <Card className="glass-soft relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10 text-[#ff7f96]">
             <AlertTriangle className="w-16 h-16" />
           </div>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">Active NG Categories</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#7b93a8]">Active NG Categories</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-rose-400">{stats.defects}</div>
+            <div className="text-3xl font-bold text-[#e0566e]">{stats.defects}</div>
           </CardContent>
         </Card>
       </div>

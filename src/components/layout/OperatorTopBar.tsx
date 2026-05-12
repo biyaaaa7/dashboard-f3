@@ -9,31 +9,31 @@ export function OperatorTopBar() {
   const { user, logout } = useAuth();
 
   return (
-    <header className="h-16 border-b border-white/5 bg-slate-900/50 backdrop-blur flex items-center justify-between px-6 sticky top-0 z-50">
+    <header className="h-16 border-b border-white/40 bg-white/60 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-50 shadow-[0_4px_24px_rgba(80,140,180,0.04)]">
       <div className="flex items-center gap-4">
         <div className="h-10 w-10 relative overflow-hidden shrink-0">
           <Image src="/logo_dnp.png" alt="DNP" fill className="object-contain" />
         </div>
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-50">DNP Monitoring Produksi</h1>
-          <p className="text-xs text-slate-400">Production Monitoring System</p>
+          <h1 className="text-xl font-bold tracking-tight text-[#123047]">DNP Monitoring Produksi</h1>
+          <p className="text-xs text-[#4f6b81]">Production Monitoring System</p>
         </div>
       </div>
 
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-3">
           <div className="text-right hidden sm:block">
-            <p className="text-sm font-medium text-slate-200">{user?.name}</p>
-            <p className="text-xs text-slate-500 capitalize">{user?.role}</p>
+            <p className="text-sm font-semibold text-[#123047]">{user?.name}</p>
+            <p className="text-xs text-[#7b93a8] capitalize">{user?.role}</p>
           </div>
-          <div className="h-10 w-10 rounded-full bg-slate-800 flex items-center justify-center border border-white/10">
-            <UserCircle className="h-6 w-6 text-slate-400" />
+          <div className="h-10 w-10 rounded-full bg-white/60 border border-white/50 flex items-center justify-center shadow-sm">
+            <UserCircle className="h-6 w-6 text-[#7b93a8]" />
           </div>
         </div>
-        <div className="w-px h-8 bg-white/10 hidden sm:block"></div>
+        <div className="w-px h-8 bg-white/40 hidden sm:block"></div>
         <Button 
           variant="outline" 
-          className="border-white/10 bg-white/5 hover:bg-rose-500/20 hover:text-rose-400 hover:border-rose-500/30 text-slate-300 transition-colors"
+          className="border-white/50 bg-white/40 hover:bg-rose-50 hover:text-rose-600 hover:border-white/50 text-[#4f6b81] transition-colors shadow-sm rounded-[14px]"
           onClick={logout}
         >
           <LogOut size={18} className="mr-2 sm:hidden md:block" />

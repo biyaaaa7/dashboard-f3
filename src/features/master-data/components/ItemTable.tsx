@@ -81,10 +81,10 @@ export function ItemTable() {
     <div className="space-y-4">
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div className="relative w-full sm:w-96">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#7b93a8]" />
           <Input 
             placeholder="Cari kode, nama, atau kategori..." 
-            className="pl-9 bg-slate-900/50 border-white/10 text-slate-100"
+            className="pl-9 bg-white/60 border-white/40 text-[#0f172a] placeholder:text-[#7b93a8] shadow-sm rounded-xl focus-visible:ring-[#5cc8ff]"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -92,48 +92,48 @@ export function ItemTable() {
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger render={
-            <Button onClick={() => handleOpenDialog()} className="bg-blue-600 hover:bg-blue-500 text-white">
+            <Button onClick={() => handleOpenDialog()} className="bg-gradient-to-r from-[#5cc8ff] to-[#4da8ff] hover:opacity-90 text-white shadow-sm rounded-xl border-none">
               <Plus className="h-4 w-4 mr-2" />
               Tambah Item
             </Button>
           } />
-          <DialogContent className="bg-slate-900 border-white/10 text-slate-50">
+          <DialogContent className="bg-white/90 backdrop-blur-xl border-white/40 text-[#0f172a] shadow-lg rounded-[24px]">
             <DialogHeader>
-              <DialogTitle>{editingItem ? 'Edit Item' : 'Tambah Item Baru'}</DialogTitle>
+              <DialogTitle className="text-[#123047]">{editingItem ? 'Edit Item' : 'Tambah Item Baru'}</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label>Kode Item</Label>
+                <Label className="text-[#4f6b81]">Kode Item</Label>
                 <Input 
                   value={formData.code} 
                   onChange={e => setFormData({...formData, code: e.target.value})}
-                  className="bg-slate-950 border-white/10"
+                  className="bg-white/60 border-white/40 text-[#123047] rounded-xl focus-visible:ring-[#5cc8ff]"
                   placeholder="Misal: BRK-001"
                 />
               </div>
               <div className="space-y-2">
-                <Label>Nama Item</Label>
+                <Label className="text-[#4f6b81]">Nama Item</Label>
                 <Input 
                   value={formData.name} 
                   onChange={e => setFormData({...formData, name: e.target.value})}
-                  className="bg-slate-950 border-white/10"
+                  className="bg-white/60 border-white/40 text-[#123047] rounded-xl focus-visible:ring-[#5cc8ff]"
                   placeholder="Misal: Bracket Utama"
                 />
               </div>
               <div className="space-y-2">
-                <Label>Kategori Produksi</Label>
+                <Label className="text-[#4f6b81]">Kategori Produksi</Label>
                 <Input 
                   value={formData.category} 
                   onChange={e => setFormData({...formData, category: e.target.value})}
-                  className="bg-slate-950 border-white/10"
+                  className="bg-white/60 border-white/40 text-[#123047] rounded-xl focus-visible:ring-[#5cc8ff]"
                   placeholder="Misal: Stamping"
                 />
               </div>
               <div className="flex justify-end gap-2 mt-6">
-                <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="hover:bg-white/5">
+                <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="hover:bg-[#aff0fa]/30 text-[#4f6b81] rounded-xl">
                   Batal
                 </Button>
-                <Button onClick={handleSave} className="bg-blue-600 hover:bg-blue-500">
+                <Button onClick={handleSave} className="bg-[#5cc8ff] hover:bg-[#4da8ff] text-white rounded-xl shadow-sm border-none">
                   Simpan
                 </Button>
               </div>
@@ -142,39 +142,39 @@ export function ItemTable() {
         </Dialog>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-slate-900/50 backdrop-blur overflow-hidden">
+      <div className="rounded-xl border border-white/40 bg-white/60 backdrop-blur-md overflow-hidden shadow-sm">
         <Table>
-          <TableHeader className="bg-slate-950/50">
-            <TableRow className="border-white/10 hover:bg-transparent">
-              <TableHead className="text-slate-400">Kode</TableHead>
-              <TableHead className="text-slate-400">Nama Item</TableHead>
-              <TableHead className="text-slate-400">Kategori</TableHead>
-              <TableHead className="text-slate-400">Status</TableHead>
-              <TableHead className="text-right text-slate-400">Aksi</TableHead>
+          <TableHeader className="bg-white/50">
+            <TableRow className="border-white/40 hover:bg-transparent">
+              <TableHead className="text-[#4f6b81]">Kode</TableHead>
+              <TableHead className="text-[#4f6b81]">Nama Item</TableHead>
+              <TableHead className="text-[#4f6b81]">Kategori</TableHead>
+              <TableHead className="text-[#4f6b81]">Status</TableHead>
+              <TableHead className="text-right text-[#4f6b81]">Aksi</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredItems.length === 0 ? (
-              <TableRow className="border-white/10 hover:bg-transparent">
-                <TableCell colSpan={5} className="text-center py-8 text-slate-500">
+              <TableRow className="border-white/40 hover:bg-transparent">
+                <TableCell colSpan={5} className="text-center py-8 text-[#7b93a8]">
                   Tidak ada data ditemukan
                 </TableCell>
               </TableRow>
             ) : (
               filteredItems.map((item) => (
-                <TableRow key={item.id} className="border-white/5 hover:bg-white/5 transition-colors">
-                  <TableCell className="font-medium text-slate-200">{item.code}</TableCell>
-                  <TableCell className="text-slate-300">{item.name}</TableCell>
+                <TableRow key={item.id} className="border-white/40 hover:bg-white/40 transition-colors">
+                  <TableCell className="font-medium text-[#123047]">{item.code}</TableCell>
+                  <TableCell className="text-[#4f6b81]">{item.name}</TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="bg-slate-800 border-slate-700 text-slate-300">
+                    <Badge variant="outline" className="bg-white/50 border-[#5cc8ff]/30 text-[#4f6b81]">
                       {item.category}
                     </Badge>
                   </TableCell>
                   <TableCell>
                     {item.isActive ? (
-                      <Badge className="bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border-0">Aktif</Badge>
+                      <Badge className="bg-[#4cc9a6]/10 text-[#2ca582] hover:bg-[#4cc9a6]/20 border-0">Aktif</Badge>
                     ) : (
-                      <Badge variant="secondary" className="bg-slate-800 text-slate-500 hover:bg-slate-700 border-0">Nonaktif</Badge>
+                      <Badge variant="secondary" className="bg-white/50 text-[#7b93a8] hover:bg-white/60 border-0">Nonaktif</Badge>
                     )}
                   </TableCell>
                   <TableCell className="text-right">
@@ -182,7 +182,7 @@ export function ItemTable() {
                       <Button 
                         variant="ghost" 
                         size="icon" 
-                        className="h-8 w-8 text-slate-400 hover:text-blue-400 hover:bg-blue-400/10"
+                        className="h-8 w-8 text-[#7b93a8] hover:text-[#5cc8ff] hover:bg-[#5cc8ff]/10 rounded-lg"
                         onClick={() => handleOpenDialog(item)}
                         title="Edit"
                       >
@@ -191,7 +191,7 @@ export function ItemTable() {
                       <Button 
                         variant="ghost" 
                         size="icon" 
-                        className={`h-8 w-8 ${item.isActive ? 'text-slate-400 hover:text-rose-400 hover:bg-rose-400/10' : 'text-slate-400 hover:text-emerald-400 hover:bg-emerald-400/10'}`}
+                        className={`h-8 w-8 rounded-lg ${item.isActive ? 'text-[#7b93a8] hover:text-[#e0566e] hover:bg-[#ff7f96]/10' : 'text-[#7b93a8] hover:text-[#2ca582] hover:bg-[#4cc9a6]/10'}`}
                         onClick={() => toggleStatus(item.id)}
                         title={item.isActive ? "Nonaktifkan" : "Aktifkan"}
                       >

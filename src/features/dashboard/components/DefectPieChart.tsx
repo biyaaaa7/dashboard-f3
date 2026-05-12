@@ -25,7 +25,7 @@ export function DefectPieChart() {
       });
     });
 
-    const colors = ['#f43f5e', '#ec4899', '#d946ef', '#a855f7', '#8b5cf6', '#6366f1'];
+    const colors = ['#ff7f96', '#ffbf69', '#5cc8ff', '#4da8ff', '#4cc9a6', '#2ca582'];
     
     const chartData = activeDefects
       .map((cat, index) => ({
@@ -40,25 +40,25 @@ export function DefectPieChart() {
 
   if (data.length === 0) {
     return (
-      <Card className="bg-slate-900/50 border-white/10 flex flex-col items-center justify-center min-h-[300px]">
-        <p className="text-slate-500">Belum ada data NG hari ini</p>
+      <Card className="bg-white/60 border-white/40 shadow-sm rounded-[24px] flex flex-col items-center justify-center min-h-[300px]">
+        <p className="text-[#7b93a8]">Belum ada data NG hari ini</p>
       </Card>
     );
   }
 
   return (
-    <Card className="bg-slate-900/50 border-white/10">
+    <Card className="bg-white/60 border-white/40 shadow-sm rounded-[24px]">
       <CardHeader>
-        <CardTitle className="text-slate-50">Distribusi Defect (NG)</CardTitle>
-        <CardDescription className="text-slate-400">Total defect per kategori hari ini</CardDescription>
+        <CardTitle className="text-[#123047]">Distribusi Defect (NG)</CardTitle>
+        <CardDescription className="text-[#7b93a8]">Total defect per kategori hari ini</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Tooltip 
-                contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '8px', color: '#f8fafc' }}
-                itemStyle={{ color: '#f8fafc' }}
+                contentStyle={{ backgroundColor: 'rgba(255,255,255,0.9)', borderColor: '#e2e8f0', borderRadius: '8px', color: '#123047', backdropFilter: 'blur(8px)' }}
+                itemStyle={{ color: '#123047' }}
               />
               <Legend verticalAlign="bottom" height={36}/>
               <Pie
@@ -69,7 +69,7 @@ export function DefectPieChart() {
                 outerRadius={100}
                 paddingAngle={5}
                 dataKey="value"
-                stroke="rgba(255,255,255,0.1)"
+                stroke="#ffffff"
               >
                 {data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />

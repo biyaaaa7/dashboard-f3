@@ -93,10 +93,10 @@ export function UserTable() {
     <div className="space-y-4">
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div className="relative w-full sm:w-96">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#7b93a8]" />
           <Input 
             placeholder="Cari username, nama, role..." 
-            className="pl-9 bg-slate-900/50 border-white/10 text-slate-100"
+            className="pl-9 bg-white/60 border-white/40 text-[#0f172a] placeholder:text-[#7b93a8] shadow-sm rounded-xl focus-visible:ring-[#5cc8ff]"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -104,39 +104,39 @@ export function UserTable() {
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger render={
-            <Button onClick={() => handleOpenDialog()} className="bg-purple-600 hover:bg-purple-500 text-white">
+            <Button onClick={() => handleOpenDialog()} className="bg-gradient-to-r from-[#5cc8ff] to-[#4da8ff] hover:opacity-90 text-white shadow-sm rounded-xl border-none">
               <Plus className="h-4 w-4 mr-2" />
               Tambah User
             </Button>
           } />
-          <DialogContent className="bg-slate-900 border-white/10 text-slate-50">
+          <DialogContent className="bg-white/90 backdrop-blur-xl border-white/40 text-[#0f172a] shadow-lg rounded-[24px]">
             <DialogHeader>
-              <DialogTitle>{editingUser ? 'Edit User' : 'Tambah User Baru'}</DialogTitle>
+              <DialogTitle className="text-[#123047]">{editingUser ? 'Edit User' : 'Tambah User Baru'}</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label>Username (Untuk Login)</Label>
+                <Label className="text-[#4f6b81]">Username (Untuk Login)</Label>
                 <Input 
                   value={formData.username} 
                   onChange={e => setFormData({...formData, username: e.target.value})}
-                  className="bg-slate-950 border-white/10"
+                  className="bg-white/60 border-white/40 text-[#123047] rounded-xl focus-visible:ring-[#5cc8ff]"
                   placeholder="Misal: operator2"
                   disabled={!!editingUser} // Disable changing username if editing
                 />
               </div>
               <div className="space-y-2">
-                <Label>Nama Lengkap</Label>
+                <Label className="text-[#4f6b81]">Nama Lengkap</Label>
                 <Input 
                   value={formData.name} 
                   onChange={e => setFormData({...formData, name: e.target.value})}
-                  className="bg-slate-950 border-white/10"
+                  className="bg-white/60 border-white/40 text-[#123047] rounded-xl focus-visible:ring-[#5cc8ff]"
                   placeholder="Misal: Joko Widodo"
                 />
               </div>
               <div className="space-y-2">
-                <Label>Role</Label>
+                <Label className="text-[#4f6b81]">Role</Label>
                 <select 
-                  className="flex h-10 w-full items-center justify-between rounded-md border border-white/10 bg-slate-950 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="flex h-10 w-full items-center justify-between rounded-[14px] border border-white/40 bg-white/60 px-3 py-2 text-sm text-[#123047] ring-offset-background placeholder:text-[#7b93a8] focus:outline-none focus:ring-2 focus:ring-[#5cc8ff] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   value={formData.role}
                   onChange={e => setFormData({...formData, role: e.target.value as any})}
                 >
@@ -146,20 +146,20 @@ export function UserTable() {
                 </select>
               </div>
               <div className="space-y-2">
-                <Label>PIN (Default: 1234)</Label>
+                <Label className="text-[#4f6b81]">PIN (Default: 1234)</Label>
                 <Input 
                   value={formData.pin} 
                   onChange={e => setFormData({...formData, pin: e.target.value})}
-                  className="bg-slate-950 border-white/10"
+                  className="bg-white/60 border-white/40 text-[#123047] rounded-xl focus-visible:ring-[#5cc8ff]"
                   placeholder="1234"
                   type="text"
                 />
               </div>
               <div className="flex justify-end gap-2 mt-6">
-                <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="hover:bg-white/5">
+                <Button variant="ghost" onClick={() => setIsDialogOpen(false)} className="hover:bg-[#aff0fa]/30 text-[#4f6b81] rounded-xl">
                   Batal
                 </Button>
-                <Button onClick={handleSave} className="bg-purple-600 hover:bg-purple-500">
+                <Button onClick={handleSave} className="bg-[#5cc8ff] hover:bg-[#4da8ff] text-white rounded-xl shadow-sm border-none">
                   Simpan
                 </Button>
               </div>
@@ -168,39 +168,39 @@ export function UserTable() {
         </Dialog>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-slate-900/50 backdrop-blur overflow-hidden">
+      <div className="rounded-xl border border-white/40 bg-white/60 backdrop-blur-md overflow-hidden shadow-sm">
         <Table>
-          <TableHeader className="bg-slate-950/50">
-            <TableRow className="border-white/10 hover:bg-transparent">
-              <TableHead className="text-slate-400">Username</TableHead>
-              <TableHead className="text-slate-400">Nama</TableHead>
-              <TableHead className="text-slate-400">Role</TableHead>
-              <TableHead className="text-slate-400">PIN</TableHead>
-              <TableHead className="text-right text-slate-400">Aksi</TableHead>
+          <TableHeader className="bg-white/50">
+            <TableRow className="border-white/40 hover:bg-transparent">
+              <TableHead className="text-[#4f6b81]">Username</TableHead>
+              <TableHead className="text-[#4f6b81]">Nama</TableHead>
+              <TableHead className="text-[#4f6b81]">Role</TableHead>
+              <TableHead className="text-[#4f6b81]">PIN</TableHead>
+              <TableHead className="text-right text-[#4f6b81]">Aksi</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredUsers.length === 0 ? (
-              <TableRow className="border-white/10 hover:bg-transparent">
-                <TableCell colSpan={5} className="text-center py-8 text-slate-500">
+              <TableRow className="border-white/40 hover:bg-transparent">
+                <TableCell colSpan={5} className="text-center py-8 text-[#7b93a8]">
                   Tidak ada user ditemukan
                 </TableCell>
               </TableRow>
             ) : (
               filteredUsers.map((u) => (
-                <TableRow key={u.id} className="border-white/5 hover:bg-white/5 transition-colors">
-                  <TableCell className="font-medium text-slate-200">{u.username}</TableCell>
-                  <TableCell className="text-slate-300">{u.name}</TableCell>
+                <TableRow key={u.id} className="border-white/40 hover:bg-white/40 transition-colors">
+                  <TableCell className="font-medium text-[#123047]">{u.username}</TableCell>
+                  <TableCell className="text-[#4f6b81]">{u.name}</TableCell>
                   <TableCell>
                     <Badge variant="outline" className={`border-0 ${
-                      u.role === 'admin' ? 'bg-purple-500/10 text-purple-400' :
-                      u.role === 'manager' ? 'bg-blue-500/10 text-blue-400' :
-                      'bg-emerald-500/10 text-emerald-400'
+                      u.role === 'admin' ? 'bg-[#5cc8ff]/20 text-[#123047]' :
+                      u.role === 'manager' ? 'bg-[#5cc8ff]/10 text-[#4f6b81]' :
+                      'bg-[#4cc9a6]/10 text-[#2ca582]'
                     }`}>
                       {u.role.toUpperCase()}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-slate-500 font-mono">
+                  <TableCell className="text-[#7b93a8] font-mono">
                     {u.pin || '1234'}
                   </TableCell>
                   <TableCell className="text-right">
@@ -208,7 +208,7 @@ export function UserTable() {
                       <Button 
                         variant="ghost" 
                         size="icon" 
-                        className="h-8 w-8 text-slate-400 hover:text-blue-400 hover:bg-blue-400/10"
+                        className="h-8 w-8 text-[#7b93a8] hover:text-[#5cc8ff] hover:bg-[#5cc8ff]/10 rounded-lg"
                         onClick={() => handleOpenDialog(u)}
                         title="Edit"
                       >
@@ -217,7 +217,7 @@ export function UserTable() {
                       <Button 
                         variant="ghost" 
                         size="icon" 
-                        className="h-8 w-8 text-slate-400 hover:text-rose-400 hover:bg-rose-400/10"
+                        className="h-8 w-8 text-[#7b93a8] hover:text-[#e0566e] hover:bg-[#ff7f96]/10 rounded-lg"
                         onClick={() => handleDelete(u.id)}
                         title="Hapus User"
                         disabled={u.username === 'admin'} // Cannot delete super admin

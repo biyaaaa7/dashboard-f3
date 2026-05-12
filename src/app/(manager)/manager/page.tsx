@@ -36,57 +36,57 @@ export default function ManagerDashboard() {
   return (
     <div className="p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-slate-50">Dashboard Produksi</h1>
-        <p className="text-slate-400 text-sm">Ringkasan performa produksi hari ini</p>
+        <h1 className="text-2xl font-bold text-[#123047]">Dashboard Produksi</h1>
+        <p className="text-[#4f6b81] text-sm">Ringkasan performa produksi hari ini</p>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="glass glow-blue relative overflow-hidden">
+        <Card className="glass-soft relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10">
             <Package className="w-16 h-16" />
           </div>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">Total Produksi</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#7b93a8]">Total Produksi</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-slate-50">{totalProduction.toLocaleString()}</div>
+            <div className="text-3xl font-bold text-[#123047]">{totalProduction.toLocaleString()}</div>
           </CardContent>
         </Card>
         
-        <Card className="glass glow-blue relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10 text-emerald-500">
+        <Card className="glass-soft relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10 text-[#4cc9a6]">
             <CheckCircle2 className="w-16 h-16" />
           </div>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">Total Good (FG)</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#7b93a8]">Total Good (FG)</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-emerald-400">{totalGood.toLocaleString()}</div>
+            <div className="text-3xl font-bold text-[#2ca582]">{totalGood.toLocaleString()}</div>
           </CardContent>
         </Card>
 
-        <Card className="glass glow-blue relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10 text-rose-500">
+        <Card className="glass-soft relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10 text-[#ff7f96]">
             <AlertTriangle className="w-16 h-16" />
           </div>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">Total Defect (NG)</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#7b93a8]">Total Defect (NG)</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-rose-400">{totalNG.toLocaleString()}</div>
+            <div className="text-3xl font-bold text-[#e0566e]">{totalNG.toLocaleString()}</div>
           </CardContent>
         </Card>
 
-        <Card className="glass glow-blue relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10 text-amber-500">
+        <Card className="glass-soft relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10 text-[#ffbf69]">
             <Activity className="w-16 h-16" />
           </div>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">Defect Rate</CardTitle>
+            <CardTitle className="text-sm font-medium text-[#7b93a8]">Defect Rate</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-amber-400">{defectRate}%</div>
+            <div className="text-3xl font-bold text-[#e5a03d]">{defectRate}%</div>
           </CardContent>
         </Card>
       </div>
@@ -98,51 +98,51 @@ export default function ManagerDashboard() {
       </div>
 
       {/* Recent Entries */}
-      <Card className="glass border-white/10">
+      <Card className="glass-soft">
         <CardHeader>
-          <CardTitle className="text-lg text-slate-50">Input Terbaru Hari Ini</CardTitle>
+          <CardTitle className="text-lg text-[#123047]">Input Terbaru Hari Ini</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="rounded-xl border border-white/10 overflow-hidden">
+          <div className="rounded-xl border border-white/40 overflow-hidden shadow-sm">
             <Table>
-              <TableHeader className="bg-slate-950/50">
-                <TableRow className="border-white/10">
-                  <TableHead className="text-slate-400">Waktu</TableHead>
-                  <TableHead className="text-slate-400">Mesin & Shift</TableHead>
-                  <TableHead className="text-slate-400">Item</TableHead>
-                  <TableHead className="text-right text-slate-400">Good</TableHead>
-                  <TableHead className="text-right text-slate-400">NG</TableHead>
+              <TableHeader className="bg-white/50">
+                <TableRow className="border-white/40">
+                  <TableHead className="text-[#4f6b81]">Waktu</TableHead>
+                  <TableHead className="text-[#4f6b81]">Mesin & Shift</TableHead>
+                  <TableHead className="text-[#4f6b81]">Item</TableHead>
+                  <TableHead className="text-right text-[#4f6b81]">Good</TableHead>
+                  <TableHead className="text-right text-[#4f6b81]">NG</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {records.length === 0 ? (
-                  <TableRow className="border-white/10 hover:bg-transparent">
-                    <TableCell colSpan={5} className="text-center py-8 text-slate-500">
+                  <TableRow className="border-white/40 hover:bg-transparent">
+                    <TableCell colSpan={5} className="text-center py-8 text-[#7b93a8]">
                       Belum ada data diinput hari ini
                     </TableCell>
                   </TableRow>
                 ) : (
                   records.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 5).map(record => (
-                    <TableRow key={record.id} className="border-white/5 hover:bg-white/5 transition-colors">
-                      <TableCell className="text-slate-300">
+                    <TableRow key={record.id} className="border-white/40 hover:bg-white/40 transition-colors">
+                      <TableCell className="text-[#123047]">
                         {format(new Date(record.createdAt), 'HH:mm', { locale: id })}
                       </TableCell>
                       <TableCell>
-                        <div className="font-medium text-slate-200">{record.machineId}</div>
-                        <div className="text-xs text-slate-500">Shift {record.shift}</div>
+                        <div className="font-medium text-[#123047]">{record.machineId}</div>
+                        <div className="text-xs text-[#7b93a8]">Shift {record.shift}</div>
                       </TableCell>
                       <TableCell>
-                        <div className="font-medium text-blue-400">{items[record.itemId]?.code}</div>
-                        <div className="text-xs text-slate-400">{items[record.itemId]?.name}</div>
+                        <div className="font-medium text-[#5cc8ff]">{items[record.itemId]?.code}</div>
+                        <div className="text-xs text-[#4f6b81]">{items[record.itemId]?.name}</div>
                       </TableCell>
-                      <TableCell className="text-right font-medium text-emerald-400">
+                      <TableCell className="text-right font-medium text-[#2ca582]">
                         {record.goodQty}
                       </TableCell>
                       <TableCell className="text-right">
                         {record.totalNG > 0 ? (
-                          <Badge variant="destructive" className="bg-rose-500/20 text-rose-400 border-0">{record.totalNG}</Badge>
+                          <Badge variant="destructive" className="bg-[#ff7f96]/20 text-[#e0566e] border-0">{record.totalNG}</Badge>
                         ) : (
-                          <span className="text-slate-500">0</span>
+                          <span className="text-[#7b93a8]">0</span>
                         )}
                       </TableCell>
                     </TableRow>
