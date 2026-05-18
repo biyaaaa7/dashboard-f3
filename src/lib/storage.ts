@@ -45,8 +45,18 @@ export const saveDefectCategories = (categories: DefectCategoryModel[]) => {
 
 // --- Master Items ---
 
+// Version string: update this whenever INITIAL_MOCK_ITEMS changes to force a reset
+const ITEMS_VERSION = 'v2-assembling-fgo';
+
 export const getMasterItems = (): MasterItem[] => {
   if (typeof window === 'undefined') return INITIAL_MOCK_ITEMS;
+  const storedVersion = localStorage.getItem('dl_master_items_version');
+  if (storedVersion !== ITEMS_VERSION) {
+    // Data version mismatch — reset to latest constants
+    localStorage.setItem(STORAGE_KEYS.ITEMS, JSON.stringify(INITIAL_MOCK_ITEMS));
+    localStorage.setItem('dl_master_items_version', ITEMS_VERSION);
+    return INITIAL_MOCK_ITEMS;
+  }
   const stored = localStorage.getItem(STORAGE_KEYS.ITEMS);
   if (!stored) {
     localStorage.setItem(STORAGE_KEYS.ITEMS, JSON.stringify(INITIAL_MOCK_ITEMS));
